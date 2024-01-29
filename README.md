@@ -25,5 +25,6 @@ docker run -p 2024:2024 spring-boot-test-image
 ````
 http://localhost:2024/swagger-ui/index.html
 ````
-* Les fichiers de test sont dans le repertoire ```/resources/files ``` du projet.
 * Vous avez ainsi accès au swagger pour tester les différentes APIs du test technique.
+
+* Les fichiers de test sont dans le repertoire ```/resources/files ``` du projet.
