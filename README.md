@@ -3,7 +3,7 @@
 ### Description
 Il s'agit d'une application Spring boot 3.2.2 en JAVA 17.
 L'application consiste à importer des fichiers multi format(txt, json, csv, xls, xml).
-L'application utilse une base de données h2. 
+L'application utilse une **base de données h2** pour stocker les information des client dans les différents fichiers. 
 
 ### Lancement du projet
 
