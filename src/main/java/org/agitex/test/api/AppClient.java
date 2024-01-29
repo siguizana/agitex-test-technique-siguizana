@@ -8,12 +8,6 @@ import java.io.IOException;
 import java.util.List;
 
 public interface AppClient {
-    /**
-     * Importation de fichier.
-     *
-     * @param file
-     */
-    void importFile(MultipartFile file) throws IOException;
 
     /**
      * Liste des client
