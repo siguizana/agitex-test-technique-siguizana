@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.agitex.test.domain.Client;
 import org.agitex.test.dto.ClientListDto;
+import org.agitex.test.dto.ISalaireMoyen;
 import org.agitex.test.repository.ClientRepository;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -27,7 +28,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -178,5 +178,25 @@ public class AppClientImpl implements AppClient {
         }
         System.out.println("::::clients::::" + clients.size());
         return clients;
+    }
+
+    /**
+     * Liste des client
+     *
+     * @return List<Client>
+     */
+    @Override
+    public List<Client> fetchClient() {
+        return clientRepository.findAll();
+    }
+
+    /**
+     * Calcul du salire moyen par profession.
+     *
+     * @return List<ISalaireMoyen>
+     */
+    @Override
+    public List<ISalaireMoyen> salaireMoyenByProssion() {
+        return clientRepository.salaireMoyen();
     }
 }

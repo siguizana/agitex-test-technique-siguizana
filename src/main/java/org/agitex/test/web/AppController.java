@@ -2,6 +2,7 @@ package org.agitex.test.web;
 
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.agitex.test.domain.Client;
 import org.agitex.test.service.AppService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
+
+import org.agitex.test.dto.ISalaireMoyen;
 
 @RestController
 @RequiredArgsConstructor
@@ -25,11 +29,40 @@ public class AppController {
         return "Bienvenue au test";
     }
 
+    /**
+     * Importation de fichier.
+     *
+     * @param file
+     * @return Void
+     * @throws IOException
+     */
     @Operation(summary = "Importation de fichier")
     @PostMapping(path = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
             produces = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Void> importFile(@RequestParam("file") final MultipartFile file) throws IOException {
         appService.importFile(file);
         return ResponseEntity.ok().build();
+    }
+
+    /**
+     * Liste des client
+     *
+     * @return List<Client>
+     */
+    @GetMapping("/client")
+    @Operation(summary = "Liste des clients")
+    public ResponseEntity<List<Client>> fetchClient() {
+        return ResponseEntity.ok().body(appService.fetchClient());
+    }
+
+    /**
+     * Calcul du salire moyen par profession.
+     *
+     * @return List<ISalaireMoyen>
+     */
+    @GetMapping("/salaire-moyen")
+    @Operation(summary = "Salaire moyen par profession")
+    public ResponseEntity<List<ISalaireMoyen>> salaireMoyenByProssion() {
+        return ResponseEntity.ok().body(appService.salaireMoyenByProssion());
     }
 }
